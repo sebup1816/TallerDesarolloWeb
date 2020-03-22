@@ -1,0 +1,32 @@
+{
+  "name": "mybacktwitter",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "morgan": "~1.9.1",
+    "mysql2": "^2.1.0",
+    "sequelize": "^5.21.5"
+  },
+  "description": "Taller",
+  "main": "app.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sebup1816/TallerDesarolloWeb.git"
+  },
+  "keywords": [
+    "taller"
+  ],
+  "author": "sebastian y jimmy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sebup1816/TallerDesarolloWeb/issues"
+  },
+  "homepage": "https://github.com/sebup1816/TallerDesarolloWeb#readme"
+}
