@@ -11,7 +11,7 @@ module.exports = (sequelize, Sequelize) =>{
                 creation_date: Sequelize.DATE,
             },
         }, {
-            tableName: "post"
+            tableName: "posts"
         }
     );
     return Post;
