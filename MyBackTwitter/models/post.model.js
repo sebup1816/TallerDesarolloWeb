@@ -4,7 +4,7 @@ module.exports = (sequelize, Sequelize) =>{
             idPost: {
                 type: Sequelize.INTEGER,
                 primaryKey: true,
-                autoIncrement: true 
+                autoIncrement: true
             },
             message: {
                 type: Sequelize.STRING,

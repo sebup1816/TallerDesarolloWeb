@@ -9,7 +9,7 @@ async function createUser(req,res){
             }
         );
         return;
-    }
+}
 // CREATING THE OBJECT TO PERSIST
     const newUserObject = {
         username: req.body.username,
@@ -75,7 +75,29 @@ async function findUserById (req, res){
     }
 }
 
+function deleteUserById(req,res){
+    try{
+        const {idUser} = req.params;
 
+       const user = dbManager.User.destroy({
+            where:{
+                idUser: idUser
+            }
+        });
+        res.json(user);
+
+    }catch(error){
+        // Print error on console
+        console.log(error);
+        // Send error message as a response 
+        res.status(500).send({
+            message: "Some error occurred"
+        });
+    }
+
+}
+
+exports.deleteUserById=deleteUserById;
 exports.findUserById=findUserById;
 exports.findAllUsers=findAllUsers;
 exports.createUser= createUser;

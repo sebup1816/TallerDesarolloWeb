@@ -6,6 +6,7 @@ var logger = require('morgan');
 //IMPORT ROUTES
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var postRouter = require('./routes/post.route');
 
 //IMPORT DATABASE
 const dbManager = require('./database/db.mannager');
@@ -19,6 +20,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/posts',postRouter);
 
 /**
  * Testing the connection to the database and recreate the models if the tables doesn´t exists  
