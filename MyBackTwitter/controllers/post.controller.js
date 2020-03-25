@@ -30,6 +30,12 @@ async function addTwett(req,res){
         }
     );
 }
+
+
+/*
+    SHOW ALL THE POST
+*/
+
 async function findAllPost (req, res){
     try {
         //Execute query
@@ -49,6 +55,8 @@ async function findAllPost (req, res){
         });
     }
 }
+
+
 function deletePostById(req,res){
     try{
         const {idPost} = req.params;
@@ -71,7 +79,7 @@ function deletePostById(req,res){
 
 }
 
-
+//EXPORTS
 exports.deletePostById=deletePostById;
 exports.addTwett=addTwett;
 exports.findAllPost=findAllPost;

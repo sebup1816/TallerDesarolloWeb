@@ -1,5 +1,11 @@
 const dbManager = require('../database/db.mannager');
 
+
+/*
+
+    Create a new user
+*/
+
 // CHECK IF THE REQUEST BODY IS EMPTY
 async function createUser(req,res){
     if(!req.body){
@@ -32,7 +38,11 @@ async function createUser(req,res){
     );
 }
 
+/*
 
+    SHOW ALL THE USERS IN THE DB
+
+*/
 async function findAllUsers (req, res){
     try {
         //Execute query
@@ -52,6 +62,12 @@ async function findAllUsers (req, res){
         });
     }
 }
+
+/*
+
+    FIND A SINGLE USER BY ID
+
+*/
 
 async function findUserById (req, res){
     try {
@@ -75,16 +91,24 @@ async function findUserById (req, res){
     }
 }
 
+
+/*
+
+    DELETE A USER BY ID
+
+*/
+
 function deleteUserById(req,res){
     try{
         const {idUser} = req.params;
+        const users = dbManager.User.findAll();
 
        const user = dbManager.User.destroy({
             where:{
                 idUser: idUser
             }
         });
-        res.json(user);
+        res.json(users);
 
     }catch(error){
         // Print error on console
@@ -96,6 +120,8 @@ function deleteUserById(req,res){
     }
 
 }
+
+//EXPORTS
 
 exports.deleteUserById=deleteUserById;
 exports.findUserById=findUserById;
