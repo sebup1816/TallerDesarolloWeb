@@ -118,11 +118,31 @@ function deleteUserById(req,res){
             message: "Some error occurred"
         });
     }
+}
+
+function addFollowers(req,res){
+    try{
+        const {idUser} = req.params;
+        const user =  dbManager.User.findOne({
+            where: {
+                idUser: idUser
+            }
+        });
+        console.log(idUser.follower);
+
+    }catch{
+        // Print error on console
+        console.log(error);
+        // Send error message as a response 
+        res.status(500).send({
+            message: "Some error occurred"
+        });
+    }
 
 }
 
 //EXPORTS
-
+exports.addFollowers=addFollowers;
 exports.deleteUserById=deleteUserById;
 exports.findUserById=findUserById;
 exports.findAllUsers=findAllUsers;

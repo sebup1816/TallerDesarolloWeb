@@ -5,7 +5,7 @@ const postController= require('../controllers/post.controller');
 
 //POST 
 router.get('/', postController.findAllPost);
-router.post('/', postController.addTwett);
+router.post('/:idUser', postController.addTwett);
 router.delete('/:idPost',postController.deletePostById);
-
+router.get('/:idUser',postController.findPostByIdUser);
 module.exports=router;

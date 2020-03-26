@@ -13,6 +13,7 @@ async function addTwett(req,res){
     // CREATING THE OBJECT TO PERSIST
     const newPostObject = {
         message: req.body.message,
+        idUser: req.params.idUser
     }
     // EXECUTING THE CREATE QUERY - INSERT THE OBJECT INTO DATABASE 
     dbManager.Post.create(newPostObject).then (
@@ -57,11 +58,15 @@ async function findAllPost (req, res){
 }
 
 
-function deletePostById(req,res){
+/*
+    DELETE POST BY ID
+*/
+
+async function deletePostById(req,res){
     try{
         const {idPost} = req.params;
 
-       const post = dbManager.Post.destroy({
+       const post = await dbManager.Post.destroy({
             where:{
                 idPost: idPost
             }
@@ -79,7 +84,34 @@ function deletePostById(req,res){
 
 }
 
+/**
+ *
+ *  SHOW POST BY ID USER 
+ *
+ */
+
+
+
+async function findPostByIdUser(req,res){
+    try{
+
+       const {idUser} = req.params;
+
+       const post = await dbManager.Post.findAll({
+            where:{
+                idUser: idUser
+            }
+        });
+
+        res.json(post);
+    }catch{
+        console.log("error");
+    }
+}
+
+
 //EXPORTS
+exports.findPostByIdUser=findPostByIdUser;
 exports.deletePostById=deletePostById;
 exports.addTwett=addTwett;
 exports.findAllPost=findAllPost;
