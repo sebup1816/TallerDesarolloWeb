@@ -141,6 +141,20 @@ function addFollowers(req,res){
 
 }
 
+async function showFollowers (req,res){
+    try{
+        const { idUser } = req.params;
+        //Execute query
+
+        
+    }catch{
+        console.log(error)
+        res.status(400).send({
+            message: "Error de usuario."
+        });
+    }
+}
+
 //EXPORTS
 exports.addFollowers=addFollowers;
 exports.deleteUserById=deleteUserById;
