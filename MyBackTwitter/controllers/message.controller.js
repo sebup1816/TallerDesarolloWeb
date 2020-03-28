@@ -4,18 +4,27 @@ const dbManager = require('../database/db.mannager');
  * CREATE NEW MESSAGE
  */
 
-function createNewMesssage (req, res){
-    try{
-        const newMessageObject = {
-            message: req.body.message,
-            idUser: req.params.idUser,
-            id
+async function createNewMesssage(req,res){
+    if(!req.body){
+        res.status (400).send(
+            {   
+                message: "REQUEST IS EMPTY!"
+            }
+        );
+        return;
+    }
+    // CREATING THE OBJECT TO PERSIST
+    const newMessageObject = {
+        message: req.body.message,
+        idUser: req.params.idUser,
+        idReceiver:req.params.idReceiver
+    }
+    // EXECUTING THE CREATE QUERY - INSERT THE OBJECT INTO DATABASE 
+    dbManager.Message.create(newMessageObject).then (
+        data => {
+            res.send (data);
         }
-        dbManager.Message.create(neWMessageObject).then (
-            data => {
-                res.send (data);
-            })
-    }catch{
+    ).catch (
         e => {
             // Print error on console
             console.log(e);
@@ -24,10 +33,26 @@ function createNewMesssage (req, res){
                 message: "Some error occurred"
             });
         }
+    );
+}
+
+
+ async function findMessage(req,res){
+    try{
+        const {idUser,idReceiver} = req.params;
+
+        const message= await dbManager.Message.findAll({
+            where:{
+                idUser: idUser,
+                idReceiver: idReceiver
+            }
+        });
+        res.json(message);
+    }catch(error){
+        console.log("error");
     }
  }
 
- function findMessage (){
-    
- }
-
+//EXPORTS
+exports.findMessage=findMessage;
+exports.createNewMesssage=createNewMesssage;

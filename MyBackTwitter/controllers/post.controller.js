@@ -1,5 +1,12 @@
 const dbManager = require('../database/db.mannager');
 
+
+/**
+ * 
+ *  CREATE A NEW POST
+ * 
+ */
+
 // CHECK IF THE REQUEST BODY IS EMPTY
 async function addTwett(req,res){
     if(!req.body){

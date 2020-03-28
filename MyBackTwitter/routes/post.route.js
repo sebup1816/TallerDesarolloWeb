@@ -3,7 +3,7 @@ var router = express.Router();
 
 const postController= require('../controllers/post.controller');
 
-//POST 
+//ROUTES 
 router.get('/', postController.findAllPost);
 router.post('/:idUser', postController.addTwett);
 router.delete('/:idPost',postController.deletePostById);

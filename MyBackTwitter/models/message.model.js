@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) =>{
-    const Message = sequelize.define ("Post", 
+    const Message = sequelize.define ("Message", 
         {
             idMessage: {
                 type: Sequelize.INTEGER,
@@ -14,8 +14,9 @@ module.exports = (sequelize, Sequelize) =>{
                 creation_date: Sequelize.DATE,
             },
         }, {
-            tableName: "posts"
+            tableName: "message"
         }
     );
-    return Post;
+    return Message;
 }
+

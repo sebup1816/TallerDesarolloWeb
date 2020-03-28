@@ -4,5 +4,6 @@ var router = express.Router();
 const messageController= require('../controllers/message.controller');
 
 // ROUTES
-
-router.post('/', messageController.createNewMesssage);
+router.get('/:idUser/:idReceiver',messageController.findMessage);
+router.post('/:idUser/:idReceiver', messageController.createNewMesssage);
+module.exports=router;
