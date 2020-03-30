@@ -17,8 +17,9 @@ async function createNewMesssage(req,res){
     const newMessageObject = {
         message: req.body.message,
         idUser: req.params.idUser,
-        idReceiver:req.params.idReceiver
+        idReceiver: req.params.idReceiver
     }
+    
     // EXECUTING THE CREATE QUERY - INSERT THE OBJECT INTO DATABASE 
     dbManager.Message.create(newMessageObject).then (
         data => {
@@ -30,7 +31,7 @@ async function createNewMesssage(req,res){
             console.log(e);
             // Send error message as a response 
             res.status(500).send({
-                message: "Some error occurred"
+                message: "Some error occurred" 
             });
         }
     );

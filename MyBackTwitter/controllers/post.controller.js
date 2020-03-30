@@ -20,7 +20,7 @@ async function addTwett(req,res){
     // CREATING THE OBJECT TO PERSIST
     const newPostObject = {
         message: req.body.message,
-        idUser: req.params.idUser
+        UserIdUser: req.params.UserIdUser
     }
     // EXECUTING THE CREATE QUERY - INSERT THE OBJECT INTO DATABASE 
     dbManager.Post.create(newPostObject).then (

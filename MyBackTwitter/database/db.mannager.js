@@ -15,7 +15,7 @@ const Message = MessageModel (sequelizeConnection, Sequelize);
 
 //CREATE RELATIONS BETWEEN MODELS
 User.hasMany(Post, { foreignKey: 'idPost', sourceKey: 'idUser' });
-Post.belongsTo(User, { foreignKey: 'idUser', sourceKey: 'idPost' });
+Post.belongsTo(User, { foreignKey: 'UserIdUser', sourceKey: 'idPost' });
 
 User.hasMany(Message,{foreignKey: 'idMessage', sourceKey: 'idUser'});
 Message.belongsTo(User, { foreignKey: 'idUser', sourceKey: 'idMessage' });
