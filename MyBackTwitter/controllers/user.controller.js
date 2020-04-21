@@ -1,8 +1,6 @@
 const dbManager = require('../database/db.mannager');
 
-
 /*
-
     Create a new user
 */
 
@@ -19,6 +17,7 @@ async function createUser(req,res){
 // CREATING THE OBJECT TO PERSIST
     const newUserObject = {
         username: req.body.username,
+        password:req.body.password,
         creation_date: req.body.creation_date
     }
     // EXECUTING THE CREATE QUERY - INSERT THE OBJECT INTO DATABASE 
@@ -141,7 +140,30 @@ function addFollowers(req,res){
 
 }
 
+async function login(req,res){
+    try {
+        const { username,password } = req.params;
+        //Execute query
+        const user = await dbManager.User.findOne({
+            where: {
+                username: username,
+                password:password
+            }
+        });
+        if(user!=null){
+            res.send("true");
+        }else{
+            res.send("false");
+        }
+
+    } catch (error) {
+        // Print error on console
+        console.log(error);
+    }
+}
+
 //EXPORTS
+exports.login=login;
 exports.addFollowers=addFollowers;
 exports.deleteUserById=deleteUserById;
 exports.findUserById=findUserById;

@@ -11,6 +11,9 @@ module.exports = (sequelize, Sequelize) =>{
                 type: Sequelize.STRING,
                 unique: true
             },
+            password:{
+                type: Sequelize.STRING
+            },
             creation_date: Sequelize.DATE,
         }, {
             tableName: "users"
